@@ -25,6 +25,15 @@ class RedditImage
 		data = json_response['data']['children'] 
 		
 		after_pointer = json_response['data']['after']
+		if @qty > 100 
+			qty_remainder = 100 - @qty 
+			if @endpoint == nil
+				response_extra = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}&after=#{after_pointer}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+			else 
+				response_extra = HTTParty.get("https://reddit.com/r/#{@sub}/#{@endpoint}.json?limit=#{@qty}&after=#{after_pointer}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+			end 
+			json_response = json_response.merge(JSON.parse(response_extra.body))
+		end 
 
 		Dir::mkdir("#{@directory}")
 		Dir::chdir("#{@directory}")
