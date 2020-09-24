@@ -2,7 +2,7 @@ require 'json'
 require 'httparty'
 
 class RedditImage
-	def initialize(sub, qty=25)
+	def initialize(sub, qty=25, directory="images")
 		@sub = sub
 		@qty = qty
 	end
@@ -17,6 +17,10 @@ class RedditImage
 		json_response = JSON.parse(response.body)
 		data = json_response['data']['children']
 		links = [] 
-		return json_response
+		data.each do |datum|
+			datum = datum['data']
+			links << datum['url_overridden_by_dest']
+		end 
+		return links 
 	end
 end
