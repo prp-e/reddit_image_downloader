@@ -13,6 +13,17 @@ class RedditImage
 	def get_info
 		puts "Going to crawl: "
 		puts "https://reddit.com/r/#{@sub}"
+
+		if @endpoint == nil
+			response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+		else 
+			response = HTTParty.get("https://reddit.com/r/#{@sub}/#{@endpoint}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+		end
+
+		after_pointer = JSON.parse(response.body)
+		after_pointer = after_pointer['data']['after']
+
+		puts "The value of \"after\" pointer is: #{after_pointer}"
 	end
 
 	def download_images
@@ -23,18 +34,7 @@ class RedditImage
 		end 
 		json_response = JSON.parse(response.body)
 		data = json_response['data']['children'] 
-		
-		after_pointer = json_response['data']['after']
-		if @qty > 100 
-			qty_remainder = 100 - @qty 
-			if @endpoint == nil
-				response_extra = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}&after=#{after_pointer}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
-			else 
-				response_extra = HTTParty.get("https://reddit.com/r/#{@sub}/#{@endpoint}.json?limit=#{@qty}&after=#{after_pointer}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
-			end 
-			json_response = json_response.merge(JSON.parse(response_extra.body))
-		end 
-
+			
 		Dir::mkdir("#{@directory}")
 		Dir::chdir("#{@directory}")
 
