@@ -32,7 +32,7 @@ class RedditImage
 
 		links.each do |link| 
 			if link != nil
-				file_name = "#{Digest::MD5.hexdigest(link)}.jpg"
+				file_name = "#{Digest::MD5.hexdigest(link)}"
 				final_image = File.open(file_name, "wb")
 				final_image.write(HTTParty.get(link))
 				puts "Wrote on #{file_name}"
