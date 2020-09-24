@@ -28,9 +28,15 @@ class RedditImage
 			links << datum['url_overridden_by_dest']
 		end
 
-		download_list = File.open("downloads_list.txt", "w")
 		links.each do |link| 
-			download_list.write(link + "\n")
+			if link != nil
+				file_name = "#{Digest::MD5.hexdigest(link)}.jpg"
+				final_image = File.open(file_name, "wb")
+				final_image.write(HTTParty.get(link))
+				puts "Wrote on #{file_name}"
+				sleep 0.5
+				final_image.close 
+			end 
 		end 
 
 		Dir::chdir("..")
