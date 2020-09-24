@@ -25,7 +25,9 @@ class RedditImage
 		links = []
 		data.each do |datum|
 			datum = datum['data']
-			links << datum['url_overridden_by_dest']
+			if datum['post_hint'] == "image"
+				links << datum['url_overridden_by_dest']
+			end 
 		end
 
 		links.each do |link| 
