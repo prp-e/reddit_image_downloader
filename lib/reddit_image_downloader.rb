@@ -22,12 +22,19 @@ class RedditImage
 		Dir::mkdir("#{@directory}")
 		Dir::chdir("#{@directory}")
 
+		links = []
 		data.each do |datum|
 			datum = datum['data']
-			final_image = File.open("#{Digest::MD5.hexdigest(datum['url_overridden_by_dest'])}.jpg", 'w')
-			final_image.write(HTTParty.get(datum['url_overridden_by_dest']))
-			sleep 0.5
-			final_image.close
+			links << datum['url_overridden_by_dest']
 		end
+
+		download_list = File.open("downloads_list.txt", "w")
+		links.each do |link| 
+			download_list.write(link + "\n")
+		end 
+
+		Dir::chdir("..")
+
+		return links
 	end
 end
