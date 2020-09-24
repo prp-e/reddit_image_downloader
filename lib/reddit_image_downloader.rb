@@ -23,6 +23,8 @@ class RedditImage
 		end 
 		json_response = JSON.parse(response.body)
 		data = json_response['data']['children'] 
+		
+		after_pointer = json_response['data']['after']
 
 		Dir::mkdir("#{@directory}")
 		Dir::chdir("#{@directory}")
