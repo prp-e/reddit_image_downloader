@@ -24,8 +24,9 @@ class RedditImage
 
 		data.each do |datum|
 			datum = datum['data']
-			final_image = File.open(Digest::MD5.hexdigest(datum['url_overridden_by_dest']), 'w')
+			final_image = File.open("#{Digest::MD5.hexdigest(datum['url_overridden_by_dest'])}.jpg", 'w')
 			final_image.write(HTTParty.get(datum['url_overridden_by_dest']))
+			sleep 0.5
 			final_image.close
 		end
 	end
