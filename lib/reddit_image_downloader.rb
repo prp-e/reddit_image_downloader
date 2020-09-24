@@ -3,10 +3,11 @@ require 'httparty'
 require 'digest'
 
 class RedditImage
-	def initialize(sub, qty=25, directory="images")
+	def initialize(sub, qty=25, directory="images", endpoint=nil)
 		@sub = sub
 		@qty = qty
 		@directory = directory
+		@endpoint = endpoint 
 	end
 
 	def get_info
@@ -15,7 +16,11 @@ class RedditImage
 	end
 
 	def download_images
-		response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+		if @endpoint == nil
+			response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+		else 
+			response = HTTParty.get("https://reddit.com/r/#{@sub}/#{@endpoint}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+		end 
 		json_response = JSON.parse(response.body)
 		data = json_response['data']['children'] 
 
