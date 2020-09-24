@@ -13,7 +13,9 @@ class RedditImage
 	end
 
 	def download_images
-		response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}")
-		return response.body 
+		response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+		json_response = JSON.parse(response.body)
+
+		return json_response
 	end
 end
