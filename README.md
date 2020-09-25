@@ -38,3 +38,25 @@ r = RedditImage.new("pizza", 50, "pizaa_pics")
 ``` 
 
 And you also can add `new`, `hot` and `top` to the mix as well! 
+
+## Getting more than 100 images 
+
+First, you need to create a new `RedditImage` class. Then, use `get_info` method. It's like this : 
+
+```ruby
+r = RedditImage.new("pizza", 100, "pizzas", "new")
+``` 
+
+Then : 
+
+```ruby 
+r.get_info
+``` 
+
+It prints out a value for `after_pointer` which can look like `t3_iricfv` or something. Then, you make it something like this:
+
+```ruby
+r = RedditImage.new("pizza", 100, "pizzas2", "new", "t3_iricfv")
+``` 
+
+and when you do a call for downloading images, it downloads a new set of images for you. 
