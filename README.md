@@ -1,6 +1,6 @@
-# Reddit Image Downloader
+# Reddit Junkie
 
-Reddit image downloader is a gem for [ruby](http://ruby-lang.org/) which lets you download images from a particular subreddit. 
+Reddit Junkie is a gem for [ruby](http://ruby-lang.org/) which lets you download images from a particular subreddit. 
 
 ## Why I made this?
 
@@ -13,7 +13,7 @@ The second reason, is that I need a big dataset of food pictures from `r/pizza` 
 First, You need to install the gem. Second, add this line to your ruby script :
 
 ```ruby
-require 'reddit_image_downloader'
+require 'reddit_junkie'
 ``` 
 
 Then, you can just get first 25 pics of `/r/pizza` like this : 
