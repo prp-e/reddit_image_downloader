@@ -3,11 +3,12 @@ require 'httparty'
 require 'digest'
 
 class RedditImage
-	def initialize(sub, qty=25, directory="images", endpoint=nil)
+	def initialize(sub, qty=25, directory="images", endpoint=nil, after_pointer=nil)
 		@sub = sub
 		@qty = qty
 		@directory = directory
 		@endpoint = endpoint 
+		@after_pointer = after_pointer
 	end
 
 	def get_info
@@ -15,9 +16,17 @@ class RedditImage
 		puts "https://reddit.com/r/#{@sub}"
 
 		if @endpoint == nil
-			response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+			if @after_pointer == nil
+				response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+			else 
+				response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}&after=#{@after_pointer}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+			end 
 		else 
-			response = HTTParty.get("https://reddit.com/r/#{@sub}/#{@endpoint}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+			if @after_pointer == nil 
+				response = HTTParty.get("https://reddit.com/r/#{@sub}/#{@endpoint}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+			else 
+				response = HTTParty.get("https://reddit.com/r/#{@sub}/#{@endpoint}.json?limit=#{@qty}&after=#{@after_pointer}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
+			end
 		end
 
 		after_pointer = JSON.parse(response.body)
