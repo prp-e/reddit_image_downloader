@@ -23,7 +23,7 @@ r = RedditImage.new("pizza")
 r.download_images 
 ```
 
-and it will add all 25 images in a directory called `downloads` in the root folder of the project. 
+and it will add all 25 images in a directory called `images` in the root folder of the project. 
 
 Need more pics? no worries : 
 
