@@ -44,14 +44,7 @@ class RedditImage
 		@directory = @directory + @index.to_s 
 	end 
 
-	def download_images
-=begin
-		if @endpoint == nil
-			response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
-		else 
-			response = HTTParty.get("https://reddit.com/r/#{@sub}/#{@endpoint}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
-		end 
-=end 
+	def download_images 
 		if @endpoint == nil
 			if @after_pointer == nil
 				response = HTTParty.get("https://reddit.com/r/#{@sub}.json?limit=#{@qty}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
@@ -65,7 +58,7 @@ class RedditImage
 				response = HTTParty.get("https://reddit.com/r/#{@sub}/#{@endpoint}.json?limit=#{@qty}&after=#{@after_pointer}", headers: {"User-agent" => "Reddit Image Downloader 1.0"})
 			end
 		end
-			
+
 		json_response = JSON.parse(response.body)
 		data = json_response['data']['children'] 
 			
