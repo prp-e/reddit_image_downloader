@@ -9,6 +9,7 @@ class RedditImage
 		@directory = directory
 		@endpoint = endpoint 
 		@after_pointer = after_pointer
+		@after_pointer_temporary = nil 
 	end
 
 	def get_info
@@ -33,7 +34,12 @@ class RedditImage
 		after_pointer = after_pointer['data']['after']
 
 		puts "The value of \"after\" pointer is: #{after_pointer}"
+		@after_pointer_temporary = after_pointer
 	end
+
+	def update_data
+		@after_pointer = @after_pointer_temporary
+	end 
 
 	def download_images
 		if @endpoint == nil
