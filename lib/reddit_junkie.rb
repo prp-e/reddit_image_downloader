@@ -10,6 +10,7 @@ class RedditImage
 		@endpoint = endpoint 
 		@after_pointer = after_pointer
 		@after_pointer_temporary = nil 
+		@index = 0
 	end
 
 	def get_info
@@ -39,6 +40,8 @@ class RedditImage
 
 	def update_data
 		@after_pointer = @after_pointer_temporary
+		@index = @index + 1
+		@directory = @directory + @index.to_s 
 	end 
 
 	def download_images
