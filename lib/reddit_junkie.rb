@@ -72,6 +72,7 @@ class RedditImage
 				final_image = File.open(file_name, "wb")
 				final_image.write(HTTParty.get(link))
 				puts "Wrote on #{file_name}"
+				file_name_base += 1
 				sleep 0.5
 				final_image.close 
 			end 
