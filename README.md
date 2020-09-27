@@ -60,3 +60,9 @@ r = RedditImage.new("pizza", 100, "pizzas2", "new", "t3_iricfv")
 ``` 
 
 and when you do a call for downloading images, it downloads a new set of images for you. 
+
+## TODO 
+
+- [ ] Providing a better naming for the downloaded images. 
+- [ ] Fixing `after_pointer` issue. 
+- [ ] Providing the CLI tool.
