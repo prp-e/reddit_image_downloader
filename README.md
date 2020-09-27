@@ -63,6 +63,6 @@ and when you do a call for downloading images, it downloads a new set of images 
 
 ## TODO 
 
-- [ ] Providing a better naming for the downloaded images. 
-- [ ] Fixing `after_pointer` issue. 
+- [x] Providing a better naming for the downloaded images. 
+- [x] Fixing `after_pointer` issue. 
 - [ ] Providing the CLI tool.
