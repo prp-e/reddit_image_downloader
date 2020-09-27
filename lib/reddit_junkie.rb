@@ -77,7 +77,7 @@ class RedditImage
 
 		links.each do |link| 
 			if link != nil
-				file_name = "#{file_name_base}"
+				file_name = "#{file_name_base}.jpg"
 				final_image = File.open(file_name, "wb")
 				final_image.write(HTTParty.get(link))
 				puts "Wrote on #{file_name}"
