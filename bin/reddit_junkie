@@ -1,3 +1,13 @@
 #!/usr/bin/ruby
 
 require_relative '../lib/reddit_junkie.rb'
+require 'optparse'
+
+options = {}
+
+OptionParser.new do |option|
+    option.on("--subreddit SUB")
+    option.on("--directory DIR")
+    option.on("--count COUNT")
+    option.on("--endpoint ENDPOINT")
+end.parse!(into: options)
