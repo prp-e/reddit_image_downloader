@@ -11,3 +11,6 @@ OptionParser.new do |option|
     option.on("--count COUNT")
     option.on("--endpoint ENDPOINT")
 end.parse!(into: options)
+
+r = RedditImage.new(options[:subreddit])
+r.download_images()
