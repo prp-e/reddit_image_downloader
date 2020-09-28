@@ -12,10 +12,10 @@ OptionParser.new do |option|
     option.on("--endpoint ENDPOINT")
 end.parse!(into: options)
 
-if options[:subreddit]
-    r = RedditImage.new(options[:subreddit])
-    r.download_images 
-elsif options[:subreddit] && options[:count]
+if options[:subreddit] && options[:count] 
     r = RedditImage.new(options[:subreddit], options[:count].to_i)
     r.download_images
+elsif options[:subreddit] 
+    r = RedditImage.new(options[:subreddit])
+    r.download_images 
 end 
