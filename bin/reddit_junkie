@@ -12,7 +12,24 @@ OptionParser.new do |option|
     option.on("--endpoint ENDPOINT")
 end.parse!(into: options)
 
-if options[:subreddit] && options[:count] 
+if options[:subreddit] && options[:count] && options[:directory]
+    count = options[:count].to_i
+    if count%100 == 0
+        count_max = count / 100
+        count_min = 0
+        while count_min < count_max do 
+            puts "Iteration No. #{count_min + 1}"
+            r = RedditImage.new(options[:subreddit], options[:count].to_i)
+            r.download_images
+            r.get_info
+            r.update_data
+            count_min += 1
+        end 
+    else 
+        r = RedditImage.new(options[:subreddit], options[:count].to_i)
+        r.download_images
+    end
+elsif options[:subreddit] && options[:count] 
     count = options[:count].to_i
     if count%100 == 0
         count_max = count / 100
