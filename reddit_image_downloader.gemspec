@@ -7,7 +7,7 @@ Gem::Specification.new do |a|
     a.authors = ["Muhammadreza Haghiri"]
     a.email = 'haghiri75@gmail.com'
     a.files = ["bin/reddit_junkie","lib/reddit_junkie.rb", "Gemfile"]
-    a.executables = ["bin/reddit_junkie"]
+    a.executables = ["reddit_junkie"]
     a.add_dependency "httparty"
     a.add_dependency "json"
     a.homepage = 
