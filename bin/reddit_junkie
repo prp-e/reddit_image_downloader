@@ -13,7 +13,7 @@ OptionParser.new do |option|
 end.parse!(into: options)
 
 if options[:subreddit] && options[:count] 
-    count = options[:count].to_it 
+    count = options[:count].to_i
     if count%100 == 0
         count_max = count / 100
         count_min = 0
