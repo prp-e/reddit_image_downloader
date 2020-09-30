@@ -66,7 +66,7 @@ class RedditImage
 		Dir::chdir("#{@directory}")
 
 		count_min = 0 
-		count_max = @qty % 100 ? @qty / 100 : "Sorry!"
+		count_max = @qty % 100 || @qty <= 100 ? @qty / 100 : "Sorry!"
 
 		while count_min < count_max
 			if @qty <= 100
