@@ -92,8 +92,8 @@ class RedditImage
 					end 
 				end
 			else 
-				r.get_info
-				r.update_data
+				self.get_info
+				self.update_data
 				links = []
 				data.each do |datum|
 					datum = datum['data']
