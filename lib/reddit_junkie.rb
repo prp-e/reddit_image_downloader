@@ -74,7 +74,7 @@ class RedditImage
 		end
 
 		file_name_base = 1
-
+		
 		links.each do |link| 
 			if link != nil
 				file_name = "#{file_name_base}.jpg"
@@ -91,4 +91,8 @@ class RedditImage
 
 		return links
 	end
+
+	def big_downloads()
+		return nil
+	end 
 end
