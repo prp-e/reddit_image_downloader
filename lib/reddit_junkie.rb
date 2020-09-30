@@ -104,7 +104,7 @@ class RedditImage
 					end 
 				end
 
-				file_name_base = count_min >= 1 ? (count_min + 1) * 100 : 1
+				file_name_base = count_min > 0 ? (count_min + 1) * 100 : 1
 			
 				links.each do |link| 
 					if link != nil
