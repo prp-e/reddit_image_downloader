@@ -40,8 +40,8 @@ class RedditImage
 
 	def update_data
 		@after_pointer = @after_pointer_temporary
-		@index = @index + 1
-		@directory = @directory + @index.to_s 
+		#@index = @index + 1
+		#@directory = @directory + @index.to_s 
 	end 
 
 	def download_images 
@@ -91,8 +91,5 @@ class RedditImage
 
 		return links
 	end
-
-	def big_downloads()
-		return nil
-	end 
+ 
 end
