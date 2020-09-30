@@ -113,6 +113,7 @@ class RedditImage
 						sleep 0.5
 						final_image.close 
 					end 
+				count_min += 1
 				end	
 			end 
 		end  
