@@ -40,8 +40,8 @@ class RedditImage
 
 	def update_data
 		@after_pointer = @after_pointer_temporary
-		@index = @index + 1
-		@directory = @directory + @index.to_s 
+		#@index = @index + 1
+		#@directory = @directory + @index.to_s 
 	end 
 
 	def download_images 
@@ -91,9 +91,13 @@ class RedditImage
 						final_image.close 
 					end 
 				end
-			else 
-				self.get_info
-				self.update_data
+			else
+
+				if count_min == 0
+					self.get_info
+					self.update_data
+				end
+
 				links = []
 				data.each do |datum|
 					datum = datum['data']
@@ -102,7 +106,7 @@ class RedditImage
 					end 
 				end
 
-				file_name_base = (count_min + 1) * 100
+				file_name_base = count_min > 100 ? (count_min + 1) * 100 : 1
 			
 				links.each do |link| 
 					if link != nil
