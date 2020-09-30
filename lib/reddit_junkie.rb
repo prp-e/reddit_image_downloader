@@ -65,8 +65,7 @@ class RedditImage
 		Dir::mkdir("#{@directory}")
 		Dir::chdir("#{@directory}")
 
-		if @qty <= 100 
-			links = []
+		links = []
 			data.each do |datum|
 				datum = datum['data']
 				if datum['post_hint'] == "image"
@@ -87,36 +86,6 @@ class RedditImage
 					final_image.close 
 				end 
 			end 
-		elsif @qty % 100 == 0
-			count_min = 0 
-			count_max = @qty / 100 
-			while count_min < count_max 
-				self.get_info
-				self.update_data
-				links = []
-				data.each do |datum|
-					datum = datum['data']
-					if datum['post_hint'] == "image"
-						links << datum['url_overridden_by_dest']
-					end 
-				end
-
-				file_name_base = (count_min + 1) * 100 
-			
-				links.each do |link| 
-					if link != nil
-						file_name = "#{file_name_base}.jpg"
-						final_image = File.open(file_name, "wb")
-						final_image.write(HTTParty.get(link))
-						puts "Wrote on #{file_name}"
-						file_name_base += 1
-						sleep 0.5
-						final_image.close 
-					end 
-				count_min += 1
-				end	
-			end 
-		end  
 
 		Dir::chdir("..")
 
