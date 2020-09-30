@@ -87,18 +87,17 @@ class RedditImage
 					final_image.close 
 				end 
 			end 
-		else
-			if @qty % 100 == 0 
-				count_min = 0 
-				count_max = @qty / 100 
-				while count_min < count_max 
-					self.get_info
-					self.update_data
-					links = []
-					data.each do |datum|
+		elsif @qty % 100 == 0
+			count_min = 0 
+			count_max = @qty / 100 
+			while count_min < count_max 
+				self.get_info
+				self.update_data
+				links = []
+				data.each do |datum|
 					datum = datum['data']
 					if datum['post_hint'] == "image"
-					links << datum['url_overridden_by_dest']
+						links << datum['url_overridden_by_dest']
 					end 
 				end
 
@@ -115,8 +114,6 @@ class RedditImage
 						final_image.close 
 					end 
 				end	
-			else 
-				puts "Not supported yet" 
 			end 
 		end  
 
