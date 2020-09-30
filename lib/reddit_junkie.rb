@@ -70,7 +70,7 @@ class RedditImage
 
 		if @qty % 100 == 0 
 			count_max = @qty / 100
-		elsif qty < 100
+		elsif @qty < 100
 			count_max = 1
 		else 
 			puts "Sorry, not supported in this version"
