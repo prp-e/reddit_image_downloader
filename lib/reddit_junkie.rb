@@ -88,7 +88,7 @@ class RedditImage
 				end 
 			end 
 		else
-			if @qty % == 0 
+			if @qty % 100 == 0 
 				count_min = 0 
 				count_max = @qty / 100 
 				while count_min < count_max 
