@@ -92,12 +92,10 @@ class RedditImage
 					end 
 				end
 			else
-
-				if count_min == 0
+				if count_min > 0
 					self.get_info
 					self.update_data
 				end
-
 				links = []
 				data.each do |datum|
 					datum = datum['data']
