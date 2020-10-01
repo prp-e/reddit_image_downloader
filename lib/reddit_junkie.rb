@@ -61,9 +61,14 @@ class RedditImage
 
 		json_response = JSON.parse(response.body)
 		data = json_response['data']['children'] 
-			
-		Dir::mkdir("#{@directory}")
-		Dir::chdir("#{@directory}")
+		
+		if Dir::exists?@directory
+			puts "#{@directory} exists!"
+			Dir::chdir("#{@directory}")
+		else 
+			Dir::mkdir("#{@directory}")
+			Dir::chdir("#{@directory}")
+		end 
 
 		count_min = 0 
 		#count_max = @qty % 100 ? @qty / 100 : "Sorry!"
