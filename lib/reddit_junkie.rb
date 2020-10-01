@@ -63,7 +63,7 @@ class RedditImage
 		data = json_response['data']['children'] 
 		
 		if Dir::exists?"#{@directory}"
-			puts "#{@directory} exists!"
+			puts "The directory \"#{@directory}\" exists!"
 			Dir::chdir("#{@directory}")
 		else 
 			Dir::mkdir("#{@directory}")
