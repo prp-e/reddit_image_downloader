@@ -14,38 +14,8 @@ end.parse!(into: options)
 
 if options[:subreddit] && options[:count] && options[:directory]
     count = options[:count].to_i
-    if count%100 == 0
-        count_max = count / 100
-        count_min = 0
-        r = RedditImage.new(options[:subreddit], options[:count].to_i, options[:directory])
-        while count_min < count_max do 
-            puts "Iteration No. #{count_min + 1}"
-            r.download_images
-            r.get_info
-            r.update_data
-            count_min += 1
-        end 
-    else 
-        r = RedditImage.new(options[:subreddit], options[:count].to_i, options[:directory])
-        r.download_images
-    end
 elsif options[:subreddit] && options[:count] 
-    count = options[:count].to_i
-    if count%100 == 0
-        count_max = count / 100
-        count_min = 0
-        r = RedditImage.new(options[:subreddit], options[:count].to_i)
-        while count_min < count_max do 
-            puts "Iteration No. #{count_min + 1}"
-            r.download_images
-            r.get_info
-            r.update_data
-            count_min += 1
-        end 
-    else 
-        r = RedditImage.new(options[:subreddit], options[:count].to_i)
-        r.download_images
-    end  
+    count = options[:count].to_i  
 elsif options[:subreddit] 
     r = RedditImage.new(options[:subreddit])
     r.download_images 
