@@ -12,7 +12,9 @@ OptionParser.new do |option|
     option.on("--endpoint ENDPOINT")
 end.parse!(into: options)
 
-if options[:subreddit] && options[:count] && options[:directory]
+if options[:subreddit] && options[:count] && options[:directory] && options[:endpoint]
+    count = options[:count].to_i
+elsif options[:subreddit] && options[:count] && options[:directory]
     count = options[:count].to_i
 elsif options[:subreddit] && options[:count] 
     count = options[:count].to_i  
