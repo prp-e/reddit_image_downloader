@@ -62,7 +62,7 @@ class RedditImage
 		json_response = JSON.parse(response.body)
 		data = json_response['data']['children'] 
 		
-		if Dir::exists?@directory
+		if Dir::exists?"#{@directory}"
 			puts "#{@directory} exists!"
 			Dir::chdir("#{@directory}")
 		else 
