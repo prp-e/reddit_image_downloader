@@ -20,6 +20,10 @@ elsif options[:subreddit] && options[:count] && options[:directory]
     count = options[:count].to_i
     r = RedditImage.new(options[:subreddit], count, options[:directory]) 
     r.download_images
+elsif options[:subreddit] && options[:directory]
+    count = 25
+    r = RedditImage.new(options[:subreddit], count, options[:directory]) 
+    r.download_images 
 elsif options[:subreddit] && options[:count] 
     count = options[:count].to_i
     r = RedditImage.new(options[:subreddit], count) 
