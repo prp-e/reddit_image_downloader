@@ -5,6 +5,10 @@ require 'optparse'
 
 options = {}
 
+def get_params(sub, dir=nil, count=25, endpoint=nil)
+    return nil
+end 
+
 OptionParser.new do |option|
     option.on("--subreddit SUB")
     option.on("--directory DIR")
