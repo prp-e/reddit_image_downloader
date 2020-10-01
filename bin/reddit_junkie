@@ -5,10 +5,6 @@ require 'optparse'
 
 options = {}
 
-def get_params(sub, dir=nil, count=25, endpoint=nil)
-    return nil
-end 
-
 OptionParser.new do |option|
     option.on("--subreddit SUB")
     option.on("--directory DIR")
@@ -18,10 +14,16 @@ end.parse!(into: options)
 
 if options[:subreddit] && options[:count] && options[:directory] && options[:endpoint]
     count = options[:count].to_i
+    r = RedditImage.new(options[:subreddit], count, options[:directory], options[:endpoint]) 
+    r.download_images
 elsif options[:subreddit] && options[:count] && options[:directory]
     count = options[:count].to_i
+    r = RedditImage.new(options[:subreddit], count, options[:directory]) 
+    r.download_images
 elsif options[:subreddit] && options[:count] 
-    count = options[:count].to_i  
+    count = options[:count].to_i
+    r = RedditImage.new(options[:subreddit], count) 
+    r.download_images
 elsif options[:subreddit] 
     r = RedditImage.new(options[:subreddit])
     r.download_images 
