@@ -8,6 +8,44 @@ First, I was really bored. For future people who will use this, I made this piec
 
 The second reason, is that I need a big dataset of food pictures from `r/pizza` or `r/hotdogs`. I also need to have a big repository of memes, so I may use this script on `r/metalmemes` or `r/dankmemes` as well. Just saying though!
 
+## CLI tool
+
+### Installing the reddit_junkie tool 
+
+On a Linux, BSD, macOS or WSL machine, you need to install ruby first. my personal preference is always [RVM](http://rvm.io), but as long as what you have installed can handle `httparty` gem, that's OK. 
+
+For installing, just run this command: 
+
+```
+gem install reddit_junkie
+```
+
+and it'll be available as a command line tool for you.
+
+### Downloading 25 images, in the default "images" directory 
+
+```
+reddit_junkie --subreddit SUB
+```
+
+for example, if you want the latest things from [r/skyporn](http://reddit.com/r/skyporn) you just run : 
+
+```
+reddit_junkie --subreddit skyporn
+``` 
+
+### Downloading 25 images in a custom directory 
+
+```
+reddit_junkie --subreddit SUB --directory DIR
+```
+
+For example, you've built a folder called `sky` and you want to save the pictures there. Also, if you haven't created the folder, `reddit_junkie` will create it for you. 
+
+```
+reddit_junkie --subreddit skyporn --directory sky
+```
+
 ## How to use 
 
 First, You need to install the gem. Second, add this line to your ruby script :
