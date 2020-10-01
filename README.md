@@ -46,6 +46,36 @@ For example, you've built a folder called `sky` and you want to save the picture
 reddit_junkie --subreddit skyporn --directory sky
 ```
 
+### Downloading more than 25 images in default "images" directory
+
+```
+reddit_junkie --subreddit SUB --count COUNT
+```
+
+For example, you want to download 300 pictures of the sky : 
+
+```
+reddit_junkie --subreddit skyporn --count 300
+```
+
+### Downloading more than 25 images in a custom directory
+
+```
+reddit_junkie --subreddit SUB --count COUNT --directory DIR
+```
+
+For example, you want to download 300 pictures of the sky, in your `sky` directory : 
+
+```
+reddit_junkie --subreddit skyporn --count 300 --directory sky
+```
+
+### Known issues / not tested 
+
+* The CLI tool isn't tested with the `--endpoint` flag yet. It seems OK though. 
+* In case of more than 100 images, you only can do the download for numbers dividable by 100. Like 300 or 1000 or 25000. As I made this tool to help me make a dataset, I haven't spent much time on fixing this issue. 
+* CLI flags/parameters reading isn't really good. It works just fine, but not absolutely in the POSIX way. 
+
 ## How to use 
 
 First, You need to install the gem. Second, add this line to your ruby script :
