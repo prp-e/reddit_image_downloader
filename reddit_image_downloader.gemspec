@@ -1,7 +1,7 @@
 Gem::Specification.new do |a| 
     a.name = 'reddit_junkie'
     a.version = '0.0.6'
-    a.date = '2020-10-2'
+    a.date = '2020-10-02'
     a.summary = "Ruby gem for downloading pictures from reddit!"
     a.description = "This little library helps people download images from different subs much easier. It's actually like a crawler for the images posted on a subreddit. Actually, it's a great tool to have your favorite memes locally!"
     a.authors = ["Muhammadreza Haghiri"]
