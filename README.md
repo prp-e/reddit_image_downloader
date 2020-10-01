@@ -65,7 +65,7 @@ and when you do a call for downloading images, it downloads a new set of images 
 
 - [x] Providing a better naming for the downloaded images. 
 - [x] Fixing `after_pointer` issue. 
-- [ ] Providing the CLI tool.
+- [x] Providing the CLI tool.
 - [ ] Refactoring currenct CLI tool.
 - [x] Large Downloads handling. 
-- [ ] Check if the directory exists or not.
+- [x] Check if the directory exists or not.
